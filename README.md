@@ -1,15 +1,15 @@
-# Sofia Cultural Map
+# Sofia Sightseeing Map
 
-**Sofia Cultural Map** project is the 8th and last project of the Front-End Web Development Nanodegree Program of Udacity.
+**Sofia Sightseeing Map** project is the 8th and last project of the Front-End Web Development Nanodegree Program of Udacity.
 
 ## Project Overview
 
-A single page application featuring a full screen Google map of a choosen location. The page represents 5 locations, identifed by map markers. When the page is loaded the User can interact with the locations. On a navigation menu five local landmarks are displayed by default. They could be filtered by name or can be directly clicked. There are animated map markers which on click show additional information about the selected landmark like landmark's title and the number of user likes according to summary provided by Foursquare API.
+The project is a single page application featuring a full screen Google map of a choosen location. The page represents 5 locations, identifed by map markers. When the page is loaded the User can interact with the locations. On a navigation menu five local landmarks are displayed by default. The user could filter them by name or can they can be directly clicked. There are animated map markers which on click show additional information about the selected landmark like landmark's title and the number of user likes according to summary provided by Foursquare API.
 The design is accessible for screen reader use.
 The page is responsive and could be used on desktop, tablet and mobile displays.
 Offline use: By a ServiceWorker => a script that your browser runs in the background for offline experience.
 
-* Notes: I'm using API keys for development purposes only. That's why when you run the app the map will be marked. Also this is the reason I'm using limit endpoints from Foursquare API. Feel free to use your own API keys.
+* Notes: The used API keys are for development purposes only. That's why when you run the app the map will be marked. Also this is the reason I'm using limit endpoints from Foursquare API. Feel free to use your own API keys.
 
 ## Installation
 
