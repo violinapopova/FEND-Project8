@@ -5,20 +5,14 @@ import Map from './components/Map';
 import Sidebar from './components/Sidebar';
 import escapeRegExp from 'escape-string-regexp';
 
-
-//https://www.klaasnotfound.com/2016/11/06/making-google-maps-work-with-react/
-//create script tag and insert it before bundle.js script tag
-function loadJS(src){ 
+//create script tag and load the Map
+function loadScripts(src){ 
   let ref = window.document.getElementsByTagName('script')[0];
   let script = window.document.createElement('script');
   script.src = src;
   script.async = true;
   ref.parentNode.insertBefore(script, ref);
-  //console.log(`REf:${ref}`, ref)
-  //onsole.log(`Script:${script}`, script)
 }
-
-
 
 class App extends Component {
 
@@ -32,7 +26,7 @@ class App extends Component {
     filterLands:[],
   }
 
-/*--init map with markers--*/ 
+/* init map with markers from Google Map API */ 
 initMap=()=>{
 
   let options = {
@@ -50,7 +44,7 @@ initMap=()=>{
  this.createMarkers();
 }
 
-//--add markers with info to landmarks--//
+/*add markers with info to landmarks*/
 createMarkers=()=>{
   let {map} = this.state;
   let initMarkers = [];
@@ -75,7 +69,7 @@ createMarkers=()=>{
 
         let infoWindow = new window.google.maps.InfoWindow()
 
-        /*--open/close infoWindow on click and set on/off animation--*/
+        /* infoWindow will open/close on click and set on/off animation */
         marker.addListener('click', ()=>{
           if(marker.active !== false){
             infoWindow.close();
@@ -125,7 +119,7 @@ createMarkers=()=>{
 }
 
 
-/*--filter landmarks and markers--*/
+/* landmarks and markers filtering */
 filterLocation =  (query)=>{
   this.setState({
     query
@@ -141,15 +135,15 @@ filterLocation =  (query)=>{
       filterLands: landmarks.filter((landmark)=>match.test(landmark.title)),
       filteredMarks: markers.filter((marker)=>match.test(marker.title))
     })
-    //console.log(`Yes: ${this.state.filteredMarks.length}`)
+    //console.log(`Correct: ${this.state.filteredMarks.length}`)
 
-    /*--if there is a match =>add marker--*/
-    setTimeout(()=>{
+    /* in case of a match => add marker */
+    setTimeout(() => {
       this.addMarker();
     }, 1500)
 
   }else{
-    setTimeout(()=>{
+    setTimeout(() => {
       this.resetMarker();
 
       this.setState({
@@ -167,11 +161,11 @@ addMarker=()=>{
   let {map, filteredMarks, markers} = this.state
 
   markers.forEach((marker)=>{
-    marker.setMap(null);//clear all markers
+    marker.setMap(null);//clear markers
 
     filteredMarks.forEach((filteredMark)=>{
       if(filteredMark.id===marker.id){//compare markers' ids
-        filteredMark.setMap(map);//if there is a match show filtered marker(s)
+        filteredMark.setMap(map);//in case of match show filtered marker(s)
         filteredMark.setAnimation(window.google.maps.Animation.BOUNCE);
       }
     })
@@ -187,31 +181,28 @@ resetMarker=()=>{
 }
 
 
-/*--click on a location item and activate the corresponding marker--*/
+/* click on a location item to activate the corresponding marker */
 linkMarkers=(event)=>{
   let {markers} = this.state;
   markers.forEach((marker)=>{
     if(marker.title===event.target.innerHTML){  
-      //console.log(event.target.innerHTML) e.target refers to the innerHTML of clicked element 
-    window.google.maps.event.trigger(marker, 'click'); //https://stackoverflow.com/questions/2730929/how-to-trigger-the-onclick-event-of-a-marker-on-a-google-maps-v3/2731781#2731781
+      //console.log(event.target.innerHTML) refers to the innerHTML of clicked element 
+    window.google.maps.event.trigger(marker, 'click'); 
     
     }
   })
 }
 
-
-
-
 componentDidMount() {
   window.initMap = this.initMap; //connect initMap() with global window context and Google maps can invoke it
-  loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyDGUWD_SkIAdfRuO175gFcY_VOpbhvvbJc&language=en&callback=initMap')
+  loadScripts('https://maps.googleapis.com/maps/api/js?key=AIzaSyDGUWD_SkIAdfRuO175gFcY_VOpbhvvbJc&language=en&callback=initMap')
 //this way the full list of locations is desplayed by default: 
   this.setState({
     filterLands:landmarks
   })
 }
 
-/*--open/close sidebar according to viewport--*/
+/* open/close sidebar according to viewport */
 toggleMenu(){
   document.querySelector('#sidebar').classList.toggle('open')
 }
@@ -227,7 +218,7 @@ toggleMenu(){
         
         <header className="App-header">
           
-          <div className="menu-btn" tabIndex="0" role="button" aria-label="toggle menu" onClick={this.toggleMenu}>&#9776;</div>     {/*https://www.youtube.com/watch?v=xMTs8tAapnQ*/}
+          <div className="menu-btn" tabIndex="0" role="button" aria-label="toggle menu" onClick={this.toggleMenu}>&#9776;</div> 
           
           <h1 className="App-title">Sofia Sightseeing Map</h1>
         </header>
@@ -247,7 +238,7 @@ toggleMenu(){
 
         <footer id="footer" tabIndex="0">
           <p id="footer-info">
-            Used API: <a href= "https://cloud.google.com/maps-platform/" className="api-links">Google Maps API</a> and <a href="https://foursquare.com/developers/apps" className="api-links">Foursquare API</a>
+            Used APIs: <a href= "https://cloud.google.com/maps-platform/" className="api-links">Google Maps API</a> and <a href="https://foursquare.com/developers/apps" className="api-links">Foursquare API</a>
           </p>
         </footer>
       </div>
@@ -257,7 +248,7 @@ toggleMenu(){
 
 export default App;
 
-//authentication errors
+//in case of authentication errors
 window.gm_authFailure=()=>{
-  alert("Something went wrong with Google Map:(");
+  alert("There is an error with Google Map. Check your network connection!");
 }
