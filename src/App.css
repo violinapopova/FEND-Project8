@@ -1,4 +1,4 @@
-/*=======Common=======*/
+/* General */
 * {
   box-sizing: border-box;
 }
@@ -7,10 +7,10 @@ html,
 body,
 .root,
 .App {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
   overflow: hidden; /* Disable scrolls */
+  height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -35,19 +35,19 @@ section {
 }
 
 
-/*=======Map=======*/
+/* Style for Map*/
 
 #map{
-  height: 95vh;
   max-width: 100%;
+  height: 95vh;
 }
 
 
-/*=======Header=======*/
+/* Style for Header */
 
 header{
   padding: 5px 0;
-  background: #621d2b;
+  background: #49144e;
   text-align: center;
   position: fixed;
   z-index: 2;
@@ -58,11 +58,11 @@ header{
 h1 {
   font-size: 2.9em;
   margin: 0 120px 0 150px;
-  color:yellow;
+  color:rgb(107, 211, 121);
   letter-spacing: 0.55em;
 }
 
-/*=======Sidebar=======*/
+/* Sidebar Styles */
 
 .menu-btn{
   cursor: pointer;
@@ -80,37 +80,36 @@ h1 {
   z-index: 1;
   top:0;
   left:0;
-  background: #621d2b;
+  background: #49144e;
   padding-top: 30px;
 }
 
 h2{
-  margin-top: 10px;
+  margin-top: 13px;
   font-size: 1.7em;
   padding-left: 18px;
   font-weight: normal;
   line-height: 1;
-  color: antiquewhite;
+  color: bisque;
 }
 
 button {
   cursor: pointer;
-  border-radius: 12px;
   font-size: 1.55em;
   padding: 5px;
   margin-top: 20px;
-  background-color: antiquewhite;
+  background-color: bisque;
   width: 87%;
-  font-family: 'Indie Flower', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
 }
 
 button:hover {
-  background-color: yellow;
+  background-color: rgb(107, 211, 121);
 }
 
 .location{
-  color: antiquewhite;
+  color: bisque;
   list-style: none;
   line-height: 2;
   display: block;
@@ -122,25 +121,24 @@ button:hover {
   text-align: center;
 }
 
-.input-wrapper {
+.input-container {
   text-align: center;
 }
 
 input{
   width: 85%;
   padding: 5px 8px;
-  border-radius: 6px;
   font-size: 1.6em;
   border: 2px solid #ccc;
-  font-family: 'Indie Flower', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
-/*=======Footer=======*/
+/* Footer Styles */
 
 footer{
   padding: 0;
   margin: 0;
-  background: #621d2b;
+  background: #49144e;
   width: 100vw;
   height: 5vh;
   z-index: 2;
@@ -152,12 +150,12 @@ footer{
   font-size: 1.55em;
   letter-spacing: 0.15em;
   padding: 5px 0;
-  color: antiquewhite;
+  color: bisque;
   margin: 0;
 }
 
 .api-links{
-  color:yellow;
+  color: rgb(107, 211, 121);
 }
 
 a:focus{
@@ -166,7 +164,7 @@ a:focus{
 }
 
 
-/*====================== Media Queries ======================*/
+/* Media Queries for Responsive Application*/
 @media screen and (max-width: 550px){
   .menu-btn{
     display: block;
@@ -228,4 +226,3 @@ a:focus{
     width: 25vw;
   }
 }
-
