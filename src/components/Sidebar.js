@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-
 class Sidebar extends Component{
-
-
 
     render(){
 
@@ -15,17 +12,16 @@ class Sidebar extends Component{
 
         return(
             
-                
                 <nav id="sidebar" className="nav">
 
-                    <div className="sidebar-content">
+                    <div className="sidebar-container">
                         <h2 className="filter-title">Filter Results</h2>
-                        <div className="input-wrapper">
+                        <div className="input-container">
                             <input
-                                aria-label="Filter landmark by name"
+                                aria-label="Filter by name"
                                 role="search"
                                 type="text"
-                                placeholder = "Filter landmark by name..."
+                                placeholder = "Filter by name..."
                                 value = {query}
                                 onChange={(e)=>filterLocation(e.target.value)}
                                 />
