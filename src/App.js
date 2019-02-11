@@ -11,6 +11,9 @@ function loadScripts(src){
   let script = window.document.createElement('script');
   script.src = src;
   script.async = true;
+  script.onerror = function() {
+    document.write("The map can`t be loaded")
+  }
   ref.parentNode.insertBefore(script, ref);
 }
 
