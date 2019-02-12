@@ -10,9 +10,10 @@ function loadScripts(src){
   let ref = window.document.getElementsByTagName('script')[0];
   let script = window.document.createElement('script');
   script.src = src;
-  script.async = true;
+   script.async = true;
+  script.defer = true;
   script.onerror = function() {
-    document.write("The map can`t be loaded")
+    document.write("The map can`t be loaded");
   }
   ref.parentNode.insertBefore(script, ref);
 }
